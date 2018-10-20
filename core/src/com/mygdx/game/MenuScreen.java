@@ -24,7 +24,7 @@ public class MenuScreen implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, MainClass.WIDTH, MainClass.HEIGHT);
         background = new Texture("background.png");
-        start = new Texture("start.png");
+        start = new Texture("icon.png");
         music = Gdx.audio.newMusic(Gdx.files.internal("invitation.mp3"));
     }
 
@@ -40,7 +40,7 @@ public class MenuScreen implements Screen {
         cam.update();
         game.batch.setProjectionMatrix(cam.combined);
         game.batch.begin();
-            game.batch.draw(background, 0,0);
+            game.batch.draw(background, 0,0, MainClass.WIDTH, MainClass.HEIGHT);
             game.batch.draw(start, 0,0);
             cam.setToOrtho(false, MainClass.WIDTH-changeSize(), MainClass.HEIGHT-changeSize());
             music.setLooping(true);
@@ -50,7 +50,7 @@ public class MenuScreen implements Screen {
 
         if (Gdx.input.isTouched()) {
             game.setScreen(new GameScreen(game));
-            dispose();
+            this.dispose();
         }
     }
 
